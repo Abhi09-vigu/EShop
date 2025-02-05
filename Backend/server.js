@@ -1,3 +1,4 @@
+
 const{app} = require("./app")
 require("dotenv").config()
 
@@ -6,15 +7,17 @@ const port=process.env.PORT
 const {connect}=require("./db/connection")
 
 
+const {userRoute} = require("./controllers/userRoute")
 
-
+app.get("/",(req,res)=>{
+    res.send("hello")
+})
 
 app.listen(port,async()=>{
     try{
         await connect
         
         console.log(`app is running on http://localhost:${port}`)
-
     }
     catch(err){
         console.log(err)
